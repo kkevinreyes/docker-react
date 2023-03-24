@@ -1,0 +1,10 @@
+language: generic
+sudo: required
+services:
+  - docker
+
+before_install: #before test run
+  - docker build -t krstncreyes/docker-react -f Dockerfile.dev .
+
+script:
+  - docker run -e CI=true krstncreyes/docker-react npm run test
